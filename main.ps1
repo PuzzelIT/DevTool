@@ -33,13 +33,12 @@ Get-ChildItem -Recurse -File | Resolve-Path -Relative | Out-File -filepath test.
 (Get-Content test.txt).replace("\","/") -join "," | Set-Content test.txt
 #(Get-Content test.txt) | Set-Content test.txt
 $classesArray = Get-Content test.txt
+$result = "digraph G {`n"
 
 foreach ($cshclass1 in $classesArray) {
 	
 	$class1 = $cshclass1.split("/")[-1].split(".")[0]
 	$pkt1 = $cshclass1.split("/")[-2]
-	#echo $cshclass1
-	echo $pkt1
 	$content = Get-Content $cshclass1.split(",")[0]
 
 	foreach ($cshclass2 in $classesArray) {
@@ -48,10 +47,11 @@ foreach ($cshclass1 in $classesArray) {
 		$pkt2 = $cshclass2.split("/")[-2]
 
 		if (isSimilar -Content $content -Target $class2 -Granularity $granularity) {
-
-			echo "$class1 -> $class2"
-
+                  $result += "  $class1 -> $class2`n"
 		}
 	}
 }
+$result += "}"
+echo $result
+
 Remove-Item test.txt
