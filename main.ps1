@@ -28,11 +28,11 @@ function isSimilar {
 
 
 
-Get-ChildItem -Recurse -File | Resolve-Path -Relative | Out-File -filepath test.txt
+Get-ChildItem -Recurse -File | Resolve-Path -Relative | Out-File -filepath swevoDevToolTemp.txt
 
-(Get-Content test.txt).replace("\","/") -join "," | Set-Content test.txt
-#(Get-Content test.txt) | Set-Content test.txt
-$classesArray = (Get-Content test.txt).split(",")
+(Get-Content swevoDevToolTemp.txt).replace("\","/") -join "," | Set-Content swevoDevToolTemp.txt
+#(Get-Content swevoDevToolTemp.txt) | Set-Content swevoDevToolTemp.txt
+$classesArray = (Get-Content swevoDevToolTemp.txt).split(",")
 $result = "digraph G {`n"
 
 foreach ($cshclass1 in $classesArray) {
@@ -54,4 +54,4 @@ foreach ($cshclass1 in $classesArray) {
 $result += "}"
 echo $result
 
-Remove-Item test.txt
+Remove-Item swevoDevToolTemp.txt
