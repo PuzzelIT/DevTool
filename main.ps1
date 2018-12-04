@@ -1,3 +1,33 @@
+param(
+  [int] $granularity = 5
+)
+
+# Returns true if at least one sequence of $granularity letters matches any part of the target.
+function isSimilar {
+  param (
+    $content,
+    $target,
+    $granularity
+  )
+
+  foreach ($word in $content) {
+    if ($word.Length -ge $granularity) {
+      $iterations = $($($word.Length) - $($granularity))
+      for ($i = 0; $i -le $iterations; $i++) {
+        $sequence = $word.Substring($i, $granularity)
+
+        if ($sequence -Match '[a-zA-Z0-9]{' + $granularity + '}') {
+          if ($target -Match $($sequence)) {
+            return $TRUE
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
 Get-ChildItem -Recurse -File | Resolve-Path -Relative | Out-File -filepath test.txt
 
 (Get-Content test.txt).replace("\","/") -join "," | Set-Content test.txt
@@ -17,7 +47,7 @@ foreach ($cshclass1 in $classesArray) {
 		$class2 = $cshclass2.split("/")[-1].split(".")[0]
 		$pkt2 = $cshclass2.split("/")[-2]
 
-		if ($content -Match "\b$class2\b") {
+		if (isSimilar -Content $content -Target $class2 -Granularity $granularity) {
 
 			echo "$class1 -> $class2"
 
