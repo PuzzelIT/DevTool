@@ -32,7 +32,7 @@ Get-ChildItem -Recurse -File | Resolve-Path -Relative | Out-File -filepath test.
 
 (Get-Content test.txt).replace("\","/") -join "," | Set-Content test.txt
 #(Get-Content test.txt) | Set-Content test.txt
-$classesArray = Get-Content test.txt
+$classesArray = (Get-Content test.txt).split(",")
 $result = "digraph G {`n"
 
 foreach ($cshclass1 in $classesArray) {
