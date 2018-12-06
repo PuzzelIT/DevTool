@@ -15,7 +15,7 @@ helpful to be familiar with PowerShell.
 
 * Navigate to the folder where you placed the script. Via command line, type:
 
-  cd \\<path>\\<to>\\<folder>
+  cd \<path>\<to>\<folder>
 
   (... And hit enter.)
   
