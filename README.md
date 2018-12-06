@@ -15,7 +15,7 @@ helpful to be familiar with PowerShell.
 
 * Navigate to the folder where you placed the script. Via command line, type:
 
-  cd \<path>\<to>\<folder>
+  cd \\<path>\\<to>\\<folder>
 
   (... And hit enter.)
   
@@ -24,7 +24,7 @@ helpful to be familiar with PowerShell.
   Granularity is given as an Integer.
   Template for execution (after following all steps above): 
   
-  .\main.ps1 <granularity> | Out-File <dot-file-name>.dot -Encoding ASCII\
+  .\\main.ps1 [granularity] | Out-File [dot-file-name].dot -Encoding ASCII\
 
   For further detailed decription of execution, see (1) below.  
   NOTE: you may be asked to set execution policy the first time you run the script. 
@@ -33,7 +33,7 @@ helpful to be familiar with PowerShell.
 
 * To generate the graph in dot, execute:
 
-  $HOME\\Downloads\\release\\bin\\dot.exe -Tpng example.dot -o example.png
+  $HOME\\Downloads\\release\\bin\\dot.exe -Tpng [dot-file-name].dot -o [dot-graph].png
 
 (1) Example:\
 PS C:\Users\AwesomeUser\Project\Src> ..\\..\DevTool\main.ps1 6 | Out-File example.dot -Encoding ASCII\
