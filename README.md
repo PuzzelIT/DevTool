@@ -7,9 +7,9 @@ helpful to be familiar with PowerShell.
 # Usage
 * Install the latest version of Graphviz dot. https://graphviz.gitlab.io/_pages/Download/Download_windows.html
 
-* Download the main script from this repository (main.ps1) and place it in the folder containing 
+* Download the main script (main.ps1) from this repository and place it in the folder containing 
   (either directly or in subfolders) the files to be analyzed. NOTE: there should NOT be a file named
-  swevoDevToolTemp.txt, as this will be overwritten by the program.
+  swevoDevToolTemp.txt in this folder already, as this will be overwritten by the program.
 
 * Open PowerShell (on Windows, click on the search-icon and type "PowerShell" into the search bar.)
 
