@@ -38,16 +38,16 @@ $result = "digraph G {`n"
 foreach ($cshclass1 in $classesArray) {
 	
 	$class1 = $cshclass1.split("/")[-1].split(".")[0]
-	$pkt1 = $cshclass1.split("/")[-2]
 	$content = Get-Content $cshclass1.split(",")[0]
 
 	foreach ($cshclass2 in $classesArray) {
 
 		$class2 = $cshclass2.split("/")[-1].split(".")[0]
-		$pkt2 = $cshclass2.split("/")[-2]
+		if ($class2 -ne "swevoDevToolTemp") {
 
-		if (isSimilar -Content $content -Target $class2 -Granularity $granularity) {
-                  $result += "  $class1 -> $class2`n"
+			if (isSimilar -Content $content -Target $class2 -Granularity $granularity) {
+                 		$result += "  $class1 -> $class2`n"
+			}
 		}
 	}
 }
